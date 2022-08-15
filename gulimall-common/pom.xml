@@ -111,6 +111,10 @@
             <artifactId>hibernate-validator-cdi</artifactId>
             <version>6.1.0.Final</version>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
     </dependencies>
 
 
