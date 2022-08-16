@@ -7,12 +7,10 @@
       <el-form-item>
         <el-button @click="getDataList()">查询</el-button>
         <el-button
-          v-if="isAuth('coupon:seckillsession:save')"
           type="primary"
           @click="addOrUpdateHandle()"
         >新增</el-button>
         <el-button
-          v-if="isAuth('coupon:seckillsession:delete')"
           type="danger"
           @click="deleteHandle()"
           :disabled="dataListSelections.length <= 0"

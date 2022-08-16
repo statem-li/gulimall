@@ -11,9 +11,8 @@
       </el-form-item>
       <el-form-item>
         <el-button @click="getDataList()">查询</el-button>
-        <el-button v-if="isAuth('ware:waresku:save')" type="primary" @click="addOrUpdateHandle()">新增</el-button>
+        <el-button type="primary" @click="addOrUpdateHandle()">新增</el-button>
         <el-button
-          v-if="isAuth('ware:waresku:delete')"
           type="danger"
           @click="deleteHandle()"
           :disabled="dataListSelections.length <= 0"
