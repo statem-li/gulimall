@@ -2,6 +2,7 @@
   * Copyright 2019 bejson.com
   */
 package com.atg.gulimall.product.vo;
+import com.atg.common.to.MemberPrice;
 import lombok.Data;
 
 import java.math.BigDecimal;

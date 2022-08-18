@@ -24,11 +24,11 @@ public class OssController {
     OSS ossClient;
 
     //TODO bootstrap没有生效应该是版本问题,目前先固定写在application.yml里
-    @Value("${alibaba.oss.endpoint}")
+    @Value("${spring.cloud.alicloud.oss.endpoint}")
     private String endpoint;
-    @Value("${alibaba.oss.bucket}")
+    @Value("${spring.cloud.alicloud.oss.bucket}")
     private String bucket;
-    @Value("${alibaba.cloud.access-key}")
+    @Value("${spring.cloud.alicloud.access-key}")
     private String accessId;
 
 

@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.3.22:3306/gulimall_pms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:mysql://192.168.3.22:3306/gulimall_wms?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: root
   cloud:
@@ -9,7 +9,7 @@ spring:
       discovery:
         server-addr: 192.168.3.22:8848
   application:
-    name: gulimall-product
+    name: gulimall-ware
   jackson:
     date-format: yyyy-MM-dd
 mybatis-plus:
@@ -18,4 +18,8 @@ mybatis-plus:
     db-config:
       id-type: auto
 server:
-  port: 8084
+  port: 8085
+logging:
+  level:
+    com.atg: debug
+

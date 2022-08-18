@@ -8,6 +8,7 @@ spring:
         namespace: 44977124-4ebd-4778-8884-318734487bd3
 
         extension-configs:
-          - data-id: oss.yml
+          - data-id: oss.yaml
             group: DEFAULT_GROUP
             refresh: true
+        file-extension: yaml
