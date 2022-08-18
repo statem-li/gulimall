@@ -45,3 +45,5 @@ buildNumber.properties
 
 **/README.md
 /gulimall-product/src/main/resources/src/
+
+/gulimall-third-party/src/main/resources/application.yml
