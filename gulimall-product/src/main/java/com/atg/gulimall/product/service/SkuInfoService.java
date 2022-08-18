@@ -5,6 +5,7 @@ import com.atg.common.utils.PageUtils;
 import com.atg.gulimall.product.entity.SkuInfoEntity;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,5 +24,6 @@ public interface SkuInfoService extends IService<SkuInfoEntity> {
     PageUtils queryPageByCondition(Map<String, Object> params);
 
 
+    List<SkuInfoEntity> getSkuBySpuId(Long spuId);
 }
 

@@ -24,6 +24,14 @@ import java.util.Map;
 public class SpuInfoController {
     @Autowired
     private SpuInfoService spuInfoService;
+    @PostMapping("/{spuId}/up")
+    //@RequiresPermissions("product:spuinfo:list")
+    public R spuUp(@PathVariable Long spuId) {
+        spuInfoService.up(spuId);
+
+        return R.ok();
+    }
+
 
     /**
      * 列表
