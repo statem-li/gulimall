@@ -12,6 +12,8 @@ spring:
     name: gulimall-product
   jackson:
     date-format: yyyy-MM-dd
+  thymeleaf:
+    cache: false
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:

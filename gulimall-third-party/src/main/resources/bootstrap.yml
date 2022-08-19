@@ -6,9 +6,8 @@ spring:
       config:
         server-addr: 192.168.3.22:8848
         namespace: 44977124-4ebd-4778-8884-318734487bd3
-
         extension-configs:
-          - data-id: oss.yaml
-            group: DEFAULT_GROUP
+          - dataId: oss.yml
+            group: dev
             refresh: true
-        file-extension: yaml
+
