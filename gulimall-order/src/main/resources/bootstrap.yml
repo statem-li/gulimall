@@ -5,4 +5,4 @@ spring:
     nacos:
       config:
         namespace: 20598db5-da36-4738-b7cc-803799d5d1a2
-      server-addr: 192.168.3.22:8848
+      server-addr: 192.168.137.22:8848

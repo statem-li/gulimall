@@ -2,7 +2,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.3.22:8848
+        server-addr: 192.168.137.22:8848
     gateway:
       routes:
         - id: product_route
@@ -39,6 +39,11 @@ spring:
             - Path=/api/**
           filters:
             - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
+
+        - id: gulimall_host_route
+          uri: lb://gulimall-product
+          predicates:
+            - Host=**.gulimall.com
   application:
     name: gulimall-gateway
 server:

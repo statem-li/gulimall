@@ -4,6 +4,6 @@ spring:
   cloud:
     nacos:
       config:
-        server-addr: 192.168.3.22:8848
+        server-addr: 192.168.137.22:8848
         namespace: 257784d3-e4e8-43bf-9d5e-cbffb39355bf
 
