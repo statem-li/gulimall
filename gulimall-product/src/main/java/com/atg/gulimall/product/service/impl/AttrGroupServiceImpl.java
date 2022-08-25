@@ -9,6 +9,8 @@ import com.atg.gulimall.product.entity.AttrGroupEntity;
 import com.atg.gulimall.product.service.AttrGroupService;
 import com.atg.gulimall.product.service.AttrService;
 import com.atg.gulimall.product.vo.AttrGroupWithAttrsVo;
+import com.atg.gulimall.product.vo.SkuItemVo;
+import com.atg.gulimall.product.vo.SpuItemAttrGroupVo;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -88,6 +90,12 @@ public class AttrGroupServiceImpl extends ServiceImpl<AttrGroupDao, AttrGroupEnt
         return collect;
 
 
+    }
+
+    @Override
+    public List<SpuItemAttrGroupVo> getAttrGroupWithAttrsBySpuId(Long spuId, Long catalogId) {
+
+        return this.baseMapper.getAttrGroupWithAttrsBySpuId(spuId,catalogId);
     }
 
 }

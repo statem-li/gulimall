@@ -14,24 +14,47 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * @Description:
+ * @Created: with IntelliJ IDEA.
+ * @author: 夏沫止水
+ * @createTime: 2020-06-06 16:48
+ **/
+
+
 @Slf4j
-@RequestMapping("/searcj/save")
+@RequestMapping(value = "/search/save")
 @RestController
 public class ElasticSaveController {
 
     @Autowired
-    ProductSaveService productSaveService;
+    private ProductSaveService productSaveService;
 
-    @PostMapping("/product")
+
+    /**
+     * 上架商品
+     * @param skuEsModels
+     * @return
+     */
+    @PostMapping(value = "/product")
     public R productStatusUp(@RequestBody List<SkuEsModel> skuEsModels) {
-        Boolean b = false;
+
+        boolean status=false;
         try {
-             b = productSaveService.productStatusUp(skuEsModels);
+            status = productSaveService.productStatusUp(skuEsModels);
         } catch (IOException e) {
-            log.error("ElasticSaveController商品上架错误:{}",e);
+            //log.error("商品上架错误{}",e);
+
             return R.error(BizCodeEnume.PRODUCT_UP_EXCEPTION.getCode(),BizCodeEnume.PRODUCT_UP_EXCEPTION.getMsg());
         }
-        if(b){return R.error(BizCodeEnume.PRODUCT_UP_EXCEPTION.getCode(),BizCodeEnume.PRODUCT_UP_EXCEPTION.getMsg());}
-        else{return R.ok();}
+
+        if(status){
+            return R.error(BizCodeEnume.PRODUCT_UP_EXCEPTION.getCode(),BizCodeEnume.PRODUCT_UP_EXCEPTION.getMsg());
+        }else {
+            return R.ok();
+        }
+
     }
+
+
 }

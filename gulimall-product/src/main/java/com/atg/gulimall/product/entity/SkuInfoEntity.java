@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * sku信息
@@ -15,6 +16,7 @@ import lombok.Data;
  * @email leifengyang@gmail.com
  * @date 2019-10-01 21:08:49
  */
+@ToString
 @Data
 @TableName("pms_sku_info")
 public class SkuInfoEntity implements Serializable {

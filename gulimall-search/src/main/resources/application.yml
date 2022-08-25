@@ -2,10 +2,26 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 192.168.3.22:8848
+        server-addr: 192.168.137.22:8848
   application:
     name: gulimall-search
   jackson:
     date-format: yyyy-MM-dd
+  thymeleaf:
+    cache: true
+  session:
+    store-type: redis
+  redis:
+    host: 192.168.137.22
+    port: 6379
 server:
   port: 9000
+
+
+
+logging:
+  level:
+    com.atg.gulimall.search: debug
+    root: warn
+  pattern:
+    console: "%d{yyyy-MM-dd} [%thread] - %msg%n"

@@ -1,12 +1,12 @@
 package com.atg.gulimall.search.service.impl;
 
 import com.alibaba.fastjson.JSON;
+
 import com.atg.common.to.es.SkuEsModel;
-import com.atg.gulimall.search.config.ElasticSearchConfig;
+import com.atg.gulimall.search.config.GulimallElasticSearchConfig;
 import com.atg.gulimall.search.constant.EsConstant;
 import com.atg.gulimall.search.service.ProductSaveService;
 import lombok.extern.slf4j.Slf4j;
-import org.elasticsearch.action.bulk.BulkItemResponse;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
 import org.elasticsearch.action.index.IndexRequest;
@@ -20,32 +20,48 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * @Description:
+ * @Created: with IntelliJ IDEA.
+ * @author: 夏沫止水
+ * @createTime: 2020-06-06 16:54
+ **/
+
 @Slf4j
-@Service
+@Service("productSaveService")
 public class ProductSaveServiceImpl implements ProductSaveService {
 
     @Autowired
-    RestHighLevelClient restHighLevelClient;
+    private RestHighLevelClient esRestClient;
 
     @Override
-    public Boolean productStatusUp(List<SkuEsModel> skuEsModels) throws IOException {
+    public boolean productStatusUp(List<SkuEsModel> skuEsModels) throws IOException {
 
-        //给ES建立索引,product,建立好映射关系
-        //给es中保存这些数据
+//1.在es中建立索引，建立号映射关系（doc/json/product-mapping.json）
+
+        //2. 在ES中保存这些数据
         BulkRequest bulkRequest = new BulkRequest();
-        for (SkuEsModel model : skuEsModels) {
+        for (SkuEsModel skuEsModel : skuEsModels) {
+            //构造保存请求
             IndexRequest indexRequest = new IndexRequest(EsConstant.PRODUCT_INDEX);
-            indexRequest.id(model.getSkuId().toString());
-            String s = JSON.toJSONString(model);
-            indexRequest.source(s, XContentType.JSON);
-
+            indexRequest.id(skuEsModel.getSkuId().toString());
+            String jsonString = JSON.toJSONString(skuEsModel);
+            indexRequest.source(jsonString, XContentType.JSON);
             bulkRequest.add(indexRequest);
         }
-        BulkResponse bulk = restHighLevelClient.bulk(bulkRequest, ElasticSearchConfig.COMMON_OPTIONS);
-        boolean b = bulk.hasFailures();
-        List<String> collect = Arrays.stream(bulk.getItems()).map(BulkItemResponse::getId).collect(Collectors.toList());
-        log.info("商品上架成功:{}",collect);
-        return b;
 
+
+        BulkResponse bulk = esRestClient.bulk(bulkRequest, GulimallElasticSearchConfig.COMMON_OPTIONS);
+
+        //TODO 如果批量错误
+        boolean hasFailures = bulk.hasFailures();
+
+        List<String> collect = Arrays.asList(bulk.getItems()).stream().map(item -> {
+            return item.getId();
+        }).collect(Collectors.toList());
+
+        log.info("商品上架完成：{}",collect);
+
+        return hasFailures;
     }
 }

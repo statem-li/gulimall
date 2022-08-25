@@ -3,10 +3,12 @@ package com.atg.gulimall.product.service;
 
 import com.atg.common.utils.PageUtils;
 import com.atg.gulimall.product.entity.SkuInfoEntity;
+import com.atg.gulimall.product.vo.SkuItemVo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * sku信息
@@ -25,5 +27,7 @@ public interface SkuInfoService extends IService<SkuInfoEntity> {
 
 
     List<SkuInfoEntity> getSkuBySpuId(Long spuId);
+
+    SkuItemVo item(Long skuId) throws ExecutionException, InterruptedException;
 }
 
