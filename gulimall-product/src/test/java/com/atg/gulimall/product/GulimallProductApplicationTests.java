@@ -12,6 +12,7 @@ import org.springframework.data.redis.core.ValueOperations;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.ExecutionException;
 
 @SpringBootTest
 class GulimallProductApplicationTests {
@@ -28,7 +29,7 @@ class GulimallProductApplicationTests {
     }
 
     @Test
-    void test(){
+    void test() throws ExecutionException, InterruptedException {
 //        ValueOperations<String, String> ops = stringRedisTemplate.opsForValue();
 //        ops.set("hello", UUID.randomUUID().toString());
 //

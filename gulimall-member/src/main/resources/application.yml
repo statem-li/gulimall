@@ -10,6 +10,7 @@ spring:
         server-addr: 192.168.137.22:8848
   application:
     name: gulimall-member
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/**/*.xml
   global-config:
@@ -17,3 +18,10 @@ mybatis-plus:
       id-type: auto
 server:
   port: 8082
+
+logging:
+  level:
+    com.atg.gulimall.member: debug
+    root: warn
+  pattern:
+    console: "%d{yyyy-MM-dd} [%thread] - %msg%n"

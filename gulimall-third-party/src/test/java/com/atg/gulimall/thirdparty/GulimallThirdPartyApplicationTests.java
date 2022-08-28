@@ -2,6 +2,7 @@ package com.atg.gulimall.thirdparty;
 
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClient;
+import com.atg.gulimall.thirdparty.component.SmsComponent;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,12 +14,8 @@ import java.io.InputStream;
 @SpringBootTest
 class GulimallThirdPartyApplicationTests {
 
-    @Test
-    void contextLoads() {
-
-
-    }
-
+    @Autowired
+    SmsComponent smsComponent;
     @Autowired
     OSS ossClient;
 
@@ -42,5 +39,11 @@ class GulimallThirdPartyApplicationTests {
         ossClient.shutdown();
 
         System.out.println("上传完成...");
+    }
+
+    @Test
+    void contextLoads() {
+        smsComponent.sendSmsCode("15938923888","fd34d","3");
+
     }
 }
